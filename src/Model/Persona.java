@@ -4,7 +4,6 @@ public class Persona {
 
 	String nombre;
 
-	
 	public Persona() {
 		super();
 	}
@@ -18,6 +17,5 @@ public class Persona {
 	public String toString() {
 		return nombre;
 	}
-	
-	
+
 }

@@ -1,5 +1,4 @@
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,14 +15,17 @@ public class Ejecutable {
 	private static final int CAMION_DESCARGA = 750;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
+		/////// AQUÍ EMPIEZA SIMULACIÓN TAREA 1
+
 		GranoCafe c = new GranoCafe();
-		Trabajador t1 = new Trabajador("Trabajador 1", CAMION_DESCARGA/2, c);
-		Trabajador t2 = new Trabajador("Trabajador 2", CAMION_DESCARGA/2, c);
+		Trabajador t1 = new Trabajador("Trabajador 1", CAMION_DESCARGA / 2, c);
+		Trabajador t2 = new Trabajador("Trabajador 2", CAMION_DESCARGA / 2, c);
 		List<Trabajador> trabajadores = new ArrayList<Trabajador>();
 		trabajadores.add(t1);
 		trabajadores.add(t2);
-		for(int i=0; i<trabajadores.size();i++) {
+		
+		for (int i = 0; i < trabajadores.size(); i++) {
 			trabajadores.get(i).start();
 			try {
 				trabajadores.get(i).join();
@@ -32,23 +34,26 @@ public class Ejecutable {
 				e1.printStackTrace();
 			}
 		}
-	
-		
-		System.out.println("Se han contado: " +c.getnGranos()+ " granos de cafe.");
 
-		
+		System.out.println("Se han contado: " + c.getnGranos() + " granos de cafe.");
+
+		////// TERMINA SIMULACIÓN TAREA 1
+
+		////// AQUÍ EMPIEZA SIMULACIÓN TAREA 2 Y 3 QUE MEDIANTE UN SWITCH LAS
+		////// EJECUTAREMOS
+		////// CASE 1: SINCRONIZACIÓN ATOMICA
+		////// CASE 2: MODELO PRODUCTOR-CONSUMIDOR
 
 		Scanner teclado = new Scanner(System.in);
 		int opcion = -1;
 
 		System.out.println("¿De qué manera quieres sincronizar la cafetera?");
 		System.out.println("1- Sincronizando el uso de la cafetera.");
-		System.out.println("2- Cliente usa la cafetera con productor consumidor.");
+		System.out.println("2- Cliente usa la cafetera con productor-consumidor.");
 		System.out.println("0- Salir");
 
 		opcion = teclado.nextInt();
-		
-		
+
 		Cafetera cafetera = new Cafetera();
 		List<Persona> fila1 = new ArrayList<Persona>();
 		List<Persona> fila2 = new ArrayList<Persona>();
@@ -61,8 +66,6 @@ public class Ejecutable {
 			Persona p = new Persona("Persona numero " + i + " de la fila izquierda.");
 			fila2.add(p);
 		}
-		
-		
 
 		switch (opcion) {
 		case 1:
@@ -72,7 +75,6 @@ public class Ejecutable {
 
 			derecha.start();
 			izquierda.start();
-			
 
 			break;
 		case 2:
@@ -94,9 +96,8 @@ public class Ejecutable {
 		case 0:
 			break;
 		default:
-			System.out.println("Esa opcion no esta disponible "+opcion);
+			System.out.println("Esa opcion no esta disponible " + opcion);
 		}
-		
 
 	}
 
